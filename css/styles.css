@@ -621,6 +621,7 @@ a {
 
 .block__header {
   text-align: center;
+  /* Used in testimonial block */
   margin-bottom: 4rem;
 }
 
