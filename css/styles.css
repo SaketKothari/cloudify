@@ -1,3 +1,4 @@
+@import './normalize.css';
 :root {
   --color-primary: #2584ff;
   --color-secondary: #00d9ff;
@@ -16,14 +17,22 @@
 }
 
 /* Typography */
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
 html {
-  /* 62.5% of 16px = 10px */
   font-size: 62.5%;
+}
+
+img {
+  width: 100%;
 }
 
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 2.4rem;
+  font-size: 2rem;
   line-height: 1.5;
   color: var(--color-body);
 }
@@ -37,8 +46,7 @@ h3 {
 }
 
 h1 {
-  /* 1 x font size of html element */
-  font-size: 7rem;
+  font-size: 6rem;
 }
 
 h2 {
@@ -46,11 +54,11 @@ h2 {
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
-/* To solve the problem of margin collapsing */
-/* This way we let the headings decide the margin of the paragraph */
 p {
   margin-top: 0;
 }
@@ -165,7 +173,6 @@ a {
   height: 40px;
 }
 
-/* Using this in testimonial */
 .icon--small {
   width: 30px;
   height: 30px;
@@ -175,7 +182,6 @@ a {
   fill: var(--color-primary);
 }
 
-/* Using this in testimonial */
 .icon--white {
   fill: #fff;
 }
@@ -190,7 +196,6 @@ a {
   align-items: center;
 }
 
-/* Using this in testimonial */
 .icon-container--accent {
   background: var(--color-accent);
 }
@@ -204,14 +209,12 @@ a {
   font-weight: 600;
   margin: 1rem 0;
   outline: 0;
-  /* Used 4vw for horizontal padding */
   padding: 2rem 4vw;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-/* Used in domain block */
 .btn .icon {
   width: 2rem;
   height: 2rem;
@@ -257,7 +260,6 @@ a {
   color: #fff;
 }
 
-/* Used in Callouts */
 .btn--stretched {
   padding-left: 6rem;
   padding-right: 6rem;
@@ -297,9 +299,7 @@ a {
 .input-group .input {
   border: 0;
   flex-grow: 1;
-  /* Added 2 rem for input in domain block */
   padding: 1.5rem 2rem;
-  /* This helped in troubleshooting -  meaning input is taking unnecessary width */
   width: 0;
 }
 
@@ -335,7 +335,6 @@ a {
   color: #fff;
 }
 
-/* Used in plans block */
 .card--primary .badge--primary {
   background: #126de4;
 }
@@ -346,7 +345,6 @@ a {
 
 /* Plans */
 .plan {
-  /* Used in plans block */
   transition: transform 0.2s ease-out;
 }
 
@@ -379,11 +377,6 @@ a {
   margin-bottom: 2rem;
 }
 
-/* Popular Image */
-.plan--popular {
-  transform: scale(1.1);
-}
-
 .plan--popular .card__header {
   position: relative;
 }
@@ -397,7 +390,6 @@ a {
   right: 5%;
 }
 
-/* Used in plans block */
 .plan:hover {
   transform: scale(1.05);
 }
@@ -511,13 +503,14 @@ a {
   padding: 3rem;
 }
 
+.testimonial .quote {
+  margin: 2rem 0;
+  font-size: 110%;
+}
+
 .testimonial__image {
   position: relative;
   margin: 0 3rem;
-}
-
-.testimonial__image > img {
-  width: 100%;
 }
 
 .testimonial__image > .icon-container {
@@ -530,15 +523,10 @@ a {
   .testimonial__image {
     margin: 0;
   }
-
-  .testimonial .quote,
-  .testimonial .quote__author {
-    font-size: 2.4rem;
-  }
-
   .testimonial .quote {
-    margin-left: 6rem;
-    margin-right: 0;
+    margin: 5rem 0 0 6rem;
+    font-size: 120%;
+    line-height: 1.5;
   }
 }
 
@@ -572,11 +560,9 @@ a {
   .callout .grid--1x2 {
     grid-template-columns: 1fr auto;
   }
-
   .callout__content {
     text-align: left;
   }
-
   .callout .btn {
     justify-self: start;
     margin: 0 2rem;
@@ -611,7 +597,7 @@ a {
 }
 
 .collapsible--expanded .collapsible__content {
-  max-height: 100vh;
+  max-height: 100%;
   opacity: 1;
 }
 
@@ -623,7 +609,6 @@ a {
 
 .block__header {
   text-align: center;
-  /* Used in testimonial block */
   margin-bottom: 4rem;
 }
 
@@ -663,7 +648,7 @@ a {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 0 1rem;
+  padding: 1rem;
   align-items: center;
 }
 
@@ -675,6 +660,10 @@ a {
 .nav__item {
   padding: 0.5rem 2rem;
   border-bottom: 1px solid #222;
+}
+
+.nav__item:last-of-type {
+  border-bottom: none;
 }
 
 .nav__item > a {
@@ -700,13 +689,13 @@ a {
 
 .nav__brand {
   transform: translateY(5px);
+  width: 150px;
 }
 
 @media screen and (min-width: 768px) {
   .nav__toggler {
     display: none;
   }
-
   .nav__list {
     width: auto;
     display: flex;
@@ -714,17 +703,12 @@ a {
     max-height: 100%;
     opacity: 1;
   }
-
   .nav__item {
     border: 0;
   }
 }
 
 /* Hero */
-.hero {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
-}
-
 .hero__tagline {
   font-size: 2rem;
   color: #b9c3cf;
@@ -732,18 +716,16 @@ a {
   margin: 2rem 0 5rem;
 }
 
-.hero__image {
-  width: 100%;
-}
-
 @media screen and (min-width: 768px) {
-  .hero {
-    padding-top: 0;
-  }
-
   .hero__content {
     text-align: left;
     align-self: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero {
+    padding-top: 0;
   }
 }
 
@@ -797,10 +779,6 @@ a {
   margin: 1rem 0;
 }
 
-.feature__image {
-  width: 100%;
-}
-
 @media screen and (min-width: 768px) {
   .feature:nth-of-type(even) .feature__content {
     order: 2;
@@ -808,19 +786,13 @@ a {
 }
 
 /* Showcase Block */
-.block-showcase__image > img {
-  width: 100%;
-}
-
 @media screen and (min-width: 768px) {
   .block-showcase .grid {
     grid-template-columns: 50% 50%;
   }
-
   .block-showcase__image {
     justify-self: end;
   }
-
   .block-showcase__image > img {
     width: auto;
     max-width: 700px;
@@ -830,6 +802,7 @@ a {
 /* Footer */
 .footer {
   background: #232323;
+  padding-top: 10rem;
 }
 
 .footer a {
@@ -853,6 +826,8 @@ a {
 .footer__heading {
   text-transform: uppercase;
   font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.5;
 }
 
 .footer__brand {
@@ -861,9 +836,6 @@ a {
 }
 
 .footer__brand img {
-  /* TODO: Consider refactoring this and applying it to 
-  all images. */
-  width: 100%;
   max-width: 230px;
 }
 
@@ -880,30 +852,29 @@ a {
   .footer__sections {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
-
   .footer .collapsible__chevron {
     display: none;
   }
-
   .footer .collapsible__content {
     opacity: 1;
     max-height: 100%;
   }
-
   .footer__brand {
     order: -1;
     margin-top: 1rem;
   }
-
   .footer__copyright {
     font-size: 1.5rem;
   }
-
   .footer__section {
     border: 0;
   }
-
   .footer__heading {
     font-size: 1.6rem;
   }
+}
+
+/* Sign-up Callout */
+.callout-signup {
+  transform: translateY(5rem);
 }
